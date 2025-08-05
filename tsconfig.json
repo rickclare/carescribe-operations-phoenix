@@ -1,0 +1,10 @@
+{
+  "include": ["**/*.ts"],
+  "exclude": ["_build/", "deps/"],
+  "compilerOptions": {
+    "target": "esnext",
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
+    "skipLibCheck": true
+  }
+}

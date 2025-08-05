@@ -1,8 +1,11 @@
 defmodule OperationsWeb.PageControllerTest do
-  use OperationsWeb.ConnCase
+  use OperationsWeb.ConnCase, async: true
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")
-    assert html_response(conn, 200) =~ "Peace of mind from prototype to production"
+    doc = html_document(conn)
+
+    assert query_text(doc, "h1") =~ "CareScribe Operations"
+    assert query_text(doc, "p") =~ "Helping us manage our business"
   end
 end

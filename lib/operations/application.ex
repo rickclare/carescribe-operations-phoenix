@@ -5,7 +5,7 @@ defmodule Operations.Application do
 
   use Application
 
-  @impl true
+  @impl Application
   def start(_type, _args) do
     children = [
       OperationsWeb.Telemetry,
@@ -26,7 +26,7 @@ defmodule Operations.Application do
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
-  @impl true
+  @impl Application
   def config_change(changed, _new, removed) do
     OperationsWeb.Endpoint.config_change(changed, removed)
     :ok

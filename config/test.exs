@@ -1,5 +1,11 @@
 import Config
 
+# Print only warnings and errors during test
+config :logger, level: :warning
+
+# In test we don't send emails
+config :operations, Operations.Mailer, adapter: Swoosh.Adapters.Test
+
 # Configure your database
 #
 # The MIX_TEST_PARTITION environment variable can be used
@@ -9,7 +15,8 @@ config :operations, Operations.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "operations_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "carescribe_operations_test#{System.get_env("MIX_TEST_PARTITION")}",
+  port: System.get_env("DATABASE_PORT") || "5432",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 
@@ -20,18 +27,12 @@ config :operations, OperationsWeb.Endpoint,
   secret_key_base: "6pLbuAegcVGC1TVrcG3Zyia2t1b+t0uT87sG0pDK4lxs2PBwyPQld1QxkkMc4a7d",
   server: false
 
-# In test we don't send emails
-config :operations, Operations.Mailer, adapter: Swoosh.Adapters.Test
-
-# Disable swoosh api client as it is only required for production adapters
-config :swoosh, :api_client, false
-
-# Print only warnings and errors during test
-config :logger, level: :warning
-
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
 
 # Enable helpful, but potentially expensive runtime checks
 config :phoenix_live_view,
   enable_expensive_runtime_checks: true
+
+# Disable swoosh api client as it is only required for production adapters
+config :swoosh, :api_client, false

@@ -19,15 +19,24 @@ defmodule OperationsWeb.ConnCase do
 
   using do
     quote do
+      use OperationsWeb, :verified_routes
+
+      import OperationsWeb.ConnCase
+      import Phoenix.ConnTest
+      import Plug.Conn
       # The default endpoint for testing
       @endpoint OperationsWeb.Endpoint
 
-      use OperationsWeb, :verified_routes
-
       # Import conveniences for testing with connections
-      import Plug.Conn
-      import Phoenix.ConnTest
-      import OperationsWeb.ConnCase
+
+      # Utility functions
+      def html_document(conn) do
+        conn |> html_response(200) |> LazyHTML.from_document()
+      end
+
+      def query_text(nodes, selector) do
+        nodes |> LazyHTML.query(selector) |> LazyHTML.text()
+      end
     end
   end
 

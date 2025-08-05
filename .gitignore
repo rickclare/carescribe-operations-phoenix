@@ -28,10 +28,32 @@ operations-*.tar
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
 
+# Gzip or Brotli compressed assets (produced by `mix phx.digest`)
+/priv/static/**/*.br
+/priv/static/**/*.gz
+
+# Digested static assets (produced by `mix phx.digest`)
+/priv/static/**/*-????????????????????????????????.*
+
 # Ignore digested assets cache.
 /priv/static/cache_manifest.json
 
 # In case you use Node.js/npm, you want to ignore these.
 npm-debug.log
+/node_modules/
 /assets/node_modules/
 
+# local environment configuration
+mise.toml
+mise.local.toml
+.envrc
+.env
+
+# Dialyzer PLT files
+*.plt
+*.plt.hash
+
+# Language servers
+.elixir_ls/
+.elixir-tools/
+.lexical/
