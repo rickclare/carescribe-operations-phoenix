@@ -16,7 +16,7 @@ config :operations, Operations.Repo,
   password: "postgres",
   hostname: "localhost",
   database: "carescribe_operations_test#{System.get_env("MIX_TEST_PARTITION")}",
-  port: System.get_env("DATABASE_PORT") || "5432",
+  port: "DATABASE_PORT" |> System.get_env("5432") |> String.to_integer(),
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 

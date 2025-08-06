@@ -1,4 +1,6 @@
 /** @type {import('stylelint').Config} */
+
+/* global module */
 module.exports = {
   plugins: ["stylelint-prettier"],
   extends: ["stylelint-config-standard"],

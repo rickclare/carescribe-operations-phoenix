@@ -11,6 +11,9 @@ config :logger, level: :info
 config :operations, OperationsWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
+# See https://hexdocs.pm/phoenix/using_ssl.html
+config :operations, OperationsWeb.Endpoint, force_ssl: [rewrite_on: [:x_forwarded_proto]]
+
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Req
 

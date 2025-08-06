@@ -1,6 +1,6 @@
 [env]
 _.path = "./_build"
-DATABASE_PORT = "543x"
+DATABASE_PORT = 543x
 MACOSX_DEPLOYMENT_TARGET = "15.4"
 PHX_HOST="carescribe-operations.test"
 BUN_OPTIONS="--bun"
