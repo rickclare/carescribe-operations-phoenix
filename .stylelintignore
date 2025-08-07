@@ -12,3 +12,5 @@
 
 # Jest coverage
 /assets/coverage
+
+/assets/css/theme/figma/themes.css

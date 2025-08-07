@@ -1,0 +1,50 @@
+/* stylelint-disable custom-property-pattern, value-keyword-case, keyframes-name-pattern */
+@theme {
+  /* clear the default TailwindCSS colours (i.e remove bg-red-100, bg-indigo-500, etc) */
+  --color-*: initial;
+
+  /* override the default font */
+  --font-sans:
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* extra animations */
+  --animate-fade-in: fadeIn 150ms ease-in-out;
+  --animate-fade-out: fadeOut 150ms ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  /* Cycle colours */
+  --color-unified-cycle-text-1: #e87755;
+  --color-unified-cycle-bg-1: #fff3ef;
+  --color-unified-cycle-text-2: #5153e8;
+  --color-unified-cycle-bg-2: #eeefff;
+  --color-unified-cycle-text-3: #639343;
+  --color-unified-cycle-bg-3: #f4faef;
+  --color-unified-cycle-text-4: #8c536a;
+  --color-unified-cycle-bg-4: #fff5f9;
+  --color-unified-cycle-text-5: #5641a2;
+  --color-unified-cycle-bg-5: #efedf7;
+  --color-unified-cycle-text-6: #cc2164;
+  --color-unified-cycle-bg-6: #fce9f1;
+  --color-unified-cycle-text-7: #0d615f;
+  --color-unified-cycle-bg-7: #e7f3f3;
+}

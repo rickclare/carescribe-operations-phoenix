@@ -20,6 +20,7 @@
 .vscode/
 .vim/
 node_modules/
+assets/node_modules/
 
 # VSCode Elixir LS
 .elixir_ls/
@@ -34,3 +35,5 @@ playwright-report/
 /playwright/.cache/
 
 AGENTS.md
+
+/assets/css/theme/figma

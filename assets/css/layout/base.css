@@ -1,0 +1,14 @@
+@layer base {
+  :root {
+    @apply bg-surface-invertible-neutral-theme-highest--default;
+    @apply text-typography-invertible-neutral-on-theme-high--default;
+
+    font-synthesis: none;
+    font-feature-settings: "liga" off;
+  }
+
+  dialog {
+    @apply bg-surface-invertible-neutral-theme-highest--default;
+    @apply text-typography-invertible-neutral-on-theme-high--default;
+  }
+}

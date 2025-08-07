@@ -1,0 +1,5 @@
+@import "./default.css";
+@import "./figma/themes.css";
+
+/* DaisyUI plugin */
+@plugin "daisyui";
