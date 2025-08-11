@@ -8,18 +8,18 @@
     "deps:update": "bun x --bun npm-check-updates@latest --interactive --root --workspace=assets --format=group --packageManager=bun --install=always"
   },
   "devDependencies": {
-    "@eslint/js": "^9.32.0",
-    "eslint": "^9.32.0",
+    "@eslint/js": "^9.33.0",
+    "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.3.0",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "prettier-plugin-toml": "^2.0.6",
-    "stylelint": "^16.23.0",
+    "stylelint": "^16.23.1",
     "stylelint-config-standard": "^39.0.0",
     "stylelint-prettier": "^5.0.3",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.39.0",
+    "typescript-eslint": "^8.39.1",
     "watchman": "^1.0.0"
   },
   "trustedDependencies": [
