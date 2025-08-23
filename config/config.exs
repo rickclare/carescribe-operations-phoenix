@@ -66,4 +66,17 @@ config :phoenix, :json_library, Jason
 config :phoenix_live_view, :colocated_js,
   target_directory: Path.expand("../assets/node_modules/phoenix-colocated", __DIR__)
 
+config :ueberauth, Ueberauth,
+  # default is "/auth"
+  base_path: "/admin/auth",
+  providers: [
+    active_admin: {
+      Ueberauth.Strategy.Google,
+      [
+        request_path: "/admin/auth/active_admin/initialise",
+        callback_path: "/admin/auth/active_admin/callback"
+      ]
+    }
+  ]
+
 import_config "#{config_env()}.exs"
