@@ -56,6 +56,19 @@ config :operations, OperationsWeb.Endpoint,
   pubsub_server: Operations.PubSub,
   live_view: [signing_salt: "syNzHv3E"]
 
+config :operations, :scopes,
+  operator: [
+    default: true,
+    module: Operations.Accounts.Scope,
+    assign_key: :current_scope,
+    access_path: [:operator, :id],
+    schema_key: :operator_id,
+    schema_type: :id,
+    schema_table: :operators,
+    test_data_fixture: Operations.AccountsFixtures,
+    test_setup_helper: :register_and_log_in_operator
+  ]
+
 config :operations,
   ecto_repos: [Operations.Repo],
   generators: [timestamp_type: :utc_datetime]
@@ -65,5 +78,18 @@ config :phoenix, :json_library, Jason
 
 config :phoenix_live_view, :colocated_js,
   target_directory: Path.expand("../assets/node_modules/phoenix-colocated", __DIR__)
+
+config :ueberauth, Ueberauth,
+  # default is "/auth"
+  base_path: "/admin/auth",
+  providers: [
+    active_admin: {
+      Ueberauth.Strategy.Google,
+      [
+        request_path: "/admin/auth/active_admin/initialise",
+        callback_path: "/admin/auth/active_admin/callback"
+      ]
+    }
+  ]
 
 import_config "#{config_env()}.exs"

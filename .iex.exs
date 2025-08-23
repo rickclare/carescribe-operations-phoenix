@@ -1,5 +1,9 @@
 import IEx.Helpers
 
+alias Operations.Accounts
+alias Operations.Accounts.Operator
+alias Operations.Repo
+
 IEx.configure(
   auto_reload: true,
   default_prompt: "%prefix:%counter>",
