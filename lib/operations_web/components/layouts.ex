@@ -35,6 +35,17 @@ defmodule OperationsWeb.Layouts do
 
   def app(assigns) do
     ~H"""
+    <nav class="m-4">
+      <.link
+        href={
+          # ~p"/auth/google"
+          ~p"/admin/auth/active_admin/initialise"
+        }
+        class="text-typography-invertible-positive-on-theme-low--secondary text-sm font-medium hover:text-typography-invertible-positive-on-theme-medium active:cursor-grabbing"
+      >
+        Sign in with Google
+      </.link>
+    </nav>
     <main class="p-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-2xl">
         <div :if={assigns[:breadcrumb]} class="breadcrumbs text-sm">

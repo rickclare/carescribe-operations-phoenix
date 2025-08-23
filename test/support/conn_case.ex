@@ -44,4 +44,45 @@ defmodule OperationsWeb.ConnCase do
     Operations.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
+
+  @doc """
+  Setup helper that registers and logs in operators.
+
+      setup :register_and_log_in_operator
+
+  It stores an updated connection and a registered operator in the
+  test context.
+  """
+  def register_and_log_in_operator(%{conn: conn} = context) do
+    operator = Operations.AccountsFixtures.operator_fixture()
+    scope = Operations.Accounts.Scope.for_operator(operator)
+
+    opts =
+      context
+      |> Map.take([:token_authenticated_at])
+      |> Enum.to_list()
+
+    %{conn: log_in_operator(conn, operator, opts), operator: operator, scope: scope}
+  end
+
+  @doc """
+  Logs the given `operator` into the `conn`.
+
+  It returns an updated `conn`.
+  """
+  def log_in_operator(conn, operator, opts \\ []) do
+    token = Operations.Accounts.generate_operator_session_token(operator)
+
+    maybe_set_token_authenticated_at(token, opts[:token_authenticated_at])
+
+    conn
+    |> Phoenix.ConnTest.init_test_session(%{})
+    |> Plug.Conn.put_session(:operator_token, token)
+  end
+
+  defp maybe_set_token_authenticated_at(_token, nil), do: nil
+
+  defp maybe_set_token_authenticated_at(token, authenticated_at) do
+    Operations.AccountsFixtures.override_token_authenticated_at(token, authenticated_at)
+  end
 end

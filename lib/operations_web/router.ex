@@ -1,6 +1,8 @@
 defmodule OperationsWeb.Router do
   use OperationsWeb, :router
 
+  import OperationsWeb.OperatorAuth
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,6 +10,7 @@ defmodule OperationsWeb.Router do
     plug :put_root_layout, html: {OperationsWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_scope_for_operator
   end
 
   pipeline :api do
@@ -18,6 +21,15 @@ defmodule OperationsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+  end
+
+  scope "/admin/auth", OperationsWeb do
+    pipe_through :browser
+
+    # get "/:provider", OperatorAuthController, :request
+    # get "/:provider/callback", OperatorAuthController, :callback
+    get "/active_admin/initialise", OperatorAuthController, :request
+    get "/active_admin/callback", OperatorAuthController, :callback
   end
 
   # Other scopes may use custom stacks.
@@ -40,5 +52,33 @@ defmodule OperationsWeb.Router do
       live_dashboard "/dashboard", metrics: OperationsWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
+  end
+
+  ## Authentication routes
+
+  scope "/", OperationsWeb do
+    pipe_through [:browser, :require_authenticated_operator]
+
+    live_session :require_authenticated_operator,
+      on_mount: [{OperationsWeb.OperatorAuth, :require_authenticated}] do
+      live "/operators/settings", OperatorLive.Settings, :edit
+      live "/operators/settings/confirm-email/:token", OperatorLive.Settings, :confirm_email
+    end
+
+    post "/operators/update-password", OperatorSessionController, :update_password
+  end
+
+  scope "/", OperationsWeb do
+    pipe_through [:browser]
+
+    live_session :current_operator,
+      on_mount: [{OperationsWeb.OperatorAuth, :mount_current_scope}] do
+      live "/operators/register", OperatorLive.Registration, :new
+      live "/operators/log-in", OperatorLive.Login, :new
+      live "/operators/log-in/:token", OperatorLive.Confirmation, :new
+    end
+
+    post "/operators/log-in", OperatorSessionController, :create
+    delete "/operators/log-out", OperatorSessionController, :delete
   end
 end
