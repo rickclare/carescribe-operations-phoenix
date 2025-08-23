@@ -9,3 +9,6 @@ CFLAGS="-O2 -g -fno-stack-check"
 KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=/opt/homebrew/opt/openssl --with-wx-config=/opt/homebrew/opt/wxwidgets/bin/wx-config"
 KERL_BUILD_DOCS="yes"
 POSTGRES_EXTRA_CONFIGURE_OPTIONS="--with-openssl --with-includes=/opt/homebrew/opt/openssl/include --with-libraries=/opt/homebrew/opt/openssl/lib --with-uuid=e2fs"
+
+GOOGLE_CLIENT_ID=[client-id]
+GOOGLE_CLIENT_SECRET=[client-secret]

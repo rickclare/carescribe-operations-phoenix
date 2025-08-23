@@ -82,6 +82,7 @@ defmodule Operations.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
       {:bandit, "~> 1.8"},
+      {:ueberauth_google, "~> 0.10"},
       #
       {:credo, "~> 1.7.12", only: [:dev, :test], runtime: false},
       {:styler, "~> 1.7", only: [:dev, :test], runtime: false},
