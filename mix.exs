@@ -106,6 +106,7 @@ defmodule Operations.MixProject do
         "cmd '_build/bun --silent install'"
       ],
       "assets.build": [
+        "compile",
         "bun css",
         "bun js"
       ],
