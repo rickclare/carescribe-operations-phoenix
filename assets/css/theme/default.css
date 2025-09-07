@@ -1,6 +1,6 @@
 /* stylelint-disable custom-property-pattern, value-keyword-case, keyframes-name-pattern */
 @theme {
-  /* clear the default TailwindCSS colours (i.e remove bg-red-100, bg-indigo-500, etc) */
+  /* clear the default TailwindCSS colors (i.e remove bg-red-100, bg-indigo-500, etc) */
   --color-*: initial;
 
   /* override the default font */
@@ -32,7 +32,7 @@
     }
   }
 
-  /* Cycle colours */
+  /* Cycle colors */
   --color-unified-cycle-text-1: #e87755;
   --color-unified-cycle-bg-1: #fff3ef;
   --color-unified-cycle-text-2: #5153e8;

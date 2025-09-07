@@ -53,6 +53,8 @@ mise.local.toml
 *.plt
 *.plt.hash
 
+/playwright/test-results/
+
 # Language servers
 .elixir_ls/
 .elixir-tools/

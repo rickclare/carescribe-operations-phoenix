@@ -9,6 +9,16 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
+## Running Playwright tests
+
+```sh
+MIX_ENV=e2e mix do ecto.create, ecto.migrate
+
+BUN_OPTIONS="" bun playwright test
+
+BUN_OPTIONS="" bun playwright test --ui
+```
+
 ## Learn more
 
 - Official website: https://www.phoenixframework.org/
