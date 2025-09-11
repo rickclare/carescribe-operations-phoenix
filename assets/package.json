@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.1.13",
-    "daisyui": "^5.1.7",
+    "daisyui": "^5.1.10",
     "phoenix": "workspace:*",
     "phoenix_html": "workspace:*",
     "phoenix_live_view": "workspace:*",

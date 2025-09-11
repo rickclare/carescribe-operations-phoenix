@@ -84,9 +84,9 @@ defmodule Operations.MixProject do
       {:bandit, "~> 1.8"},
       #
       {:credo, "~> 1.7.12", only: [:dev, :test], runtime: false},
-      {:styler, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:styler, "~> 1.8", only: [:dev, :test], runtime: false},
       {:tailwind_formatter, "~> 0.4.2", only: [:dev, :test], runtime: false},
-      {:tidewave, "~> 0.4", only: :dev}
+      {:tidewave, "~> 0.5", only: :dev}
     ]
   end
 
