@@ -35,17 +35,6 @@ defmodule OperationsWeb.Layouts do
 
   def app(assigns) do
     ~H"""
-    <nav class="m-4">
-      <.link
-        href={
-          # ~p"/auth/google"
-          ~p"/admin/auth/active_admin/initialise"
-        }
-        class="text-typography-invertible-positive-on-theme-low--secondary text-sm font-medium hover:text-typography-invertible-positive-on-theme-medium active:cursor-grabbing"
-      >
-        Sign in with Google
-      </.link>
-    </nav>
     <main class="p-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-2xl">
         <div :if={assigns[:breadcrumb]} class="breadcrumbs text-sm">
@@ -143,6 +132,45 @@ defmodule OperationsWeb.Layouts do
         <.icon name="hero-moon-micro" class="size-4 opacity-75 hover:opacity-100" />
       </button>
     </div>
+    """
+  end
+
+  attr :current_scope, :map,
+    default: nil,
+    doc: "the current [scope](https://hexdocs.pm/phoenix/scopes.html)"
+
+  def main_nav(assigns) do
+    ~H"""
+    <nav>
+      <ul class="menu menu-horizontal relative z-10 flex w-full items-center justify-center gap-4 px-4 sm:px-6 md:justify-end lg:px-8">
+        <%= if @current_scope do %>
+          <li>
+            {@current_scope.operator.email}
+          </li>
+          <li>
+            <.link href={~p"/operators/settings"}>Settings</.link>
+          </li>
+          <li>
+            <.link href={~p"/operators/log-out"} method="delete">Log out</.link>
+          </li>
+        <% else %>
+          <li>
+            <.link href={~p"/operators/register"}>Register</.link>
+          </li>
+          <li>
+            <.link href={~p"/operators/log-in"}>Log in</.link>
+          </li>
+          <li>
+            <.link href={
+              # ~p"/auth/google"
+              ~p"/admin/auth/active_admin/initialise"
+            }>
+              SSO Log in
+            </.link>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
     """
   end
 end
