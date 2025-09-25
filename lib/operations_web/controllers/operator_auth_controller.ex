@@ -5,8 +5,11 @@ defmodule OperationsWeb.OperatorAuthController do
   alias OperationsWeb.OperatorAuth
 
   plug Ueberauth
+  require Logger
 
-  def callback(%{assigns: %{ueberauth_failure: %Ueberauth.Failure{}}} = conn, _params) do
+  def callback(%{assigns: %{ueberauth_failure: %Ueberauth.Failure{} = failure}} = conn, _params) do
+    Logger.error(failure)
+
     conn
     |> put_flash(:error, "Failed to authenticate")
     |> redirect(to: ~p"/")
