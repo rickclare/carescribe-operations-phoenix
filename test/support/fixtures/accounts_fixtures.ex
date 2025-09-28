@@ -1,3 +1,4 @@
+# credo:disable-for-this-file Credo.Check.Refactor.VariableRebinding
 defmodule Operations.AccountsFixtures do
   @moduledoc """
   This module defines test helpers for creating

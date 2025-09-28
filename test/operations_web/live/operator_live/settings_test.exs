@@ -1,3 +1,4 @@
+# credo:disable-for-this-file Credo.Check.Refactor.VariableRebinding
 defmodule OperationsWeb.OperatorLive.SettingsTest do
   use OperationsWeb.ConnCase, async: true
 

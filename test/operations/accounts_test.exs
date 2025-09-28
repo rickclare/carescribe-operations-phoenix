@@ -1,5 +1,6 @@
+# credo:disable-for-this-file Credo.Check.Refactor.VariableRebinding
 defmodule Operations.AccountsTest do
-  use Operations.DataCase
+  use Operations.DataCase, async: true
 
   import Operations.AccountsFixtures
 

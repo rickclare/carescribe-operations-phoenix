@@ -1,3 +1,4 @@
+# credo:disable-for-this-file Credo.Check.Readability.ImplTrue
 defmodule OperationsWeb.OperatorLive.Login do
   @moduledoc false
   use OperationsWeb, :live_view

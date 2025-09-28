@@ -226,8 +226,9 @@ defmodule Operations.Accounts do
     {:ok, query} = OperatorToken.verify_magic_link_token_query(token)
 
     case Repo.one(query) do
-      # Prevent session fixation attacks by disallowing magic links for unconfirmed users with password
-      {%Operator{confirmed_at: nil, hashed_password: hash}, _token} when not is_nil(hash) ->
+      # Prevent session fixation attacks by disallowing magic links
+      # for unconfirmed users with password
+      {%Operator{confirmed_at: nil, hashed_password: hash}, _token} when is_binary(hash) ->
         raise """
         magic link log in is not allowed for unconfirmed users with a password set!
 

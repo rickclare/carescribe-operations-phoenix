@@ -1,3 +1,4 @@
+# credo:disable-for-this-file Credo.Check.Readability.ImplTrue
 defmodule OperationsWeb.OperatorLive.Registration do
   @moduledoc false
   use OperationsWeb, :live_view
@@ -43,8 +44,11 @@ defmodule OperationsWeb.OperatorLive.Registration do
   end
 
   @impl true
-  def mount(_params, _session, %{assigns: %{current_scope: %{operator: operator}}} = socket)
-      when not is_nil(operator) do
+  def mount(
+        _params,
+        _session,
+        %{assigns: %{current_scope: %{operator: %Operator{}}}} = socket
+      ) do
     {:ok, redirect(socket, to: OperationsWeb.OperatorAuth.signed_in_path(socket))}
   end
 
