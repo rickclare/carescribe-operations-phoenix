@@ -86,7 +86,7 @@ defmodule Operations.MixProject do
       {:ueberauth_google, "~> 0.10"},
       #
       {:credo, "~> 1.7.12", only: [:dev, :test], runtime: false},
-      {:styler, "~> 1.8", only: [:dev, :test], runtime: false},
+      {:styler, "~> 1.9", only: [:dev, :test], runtime: false},
       {:tailwind_formatter, "~> 0.4.2", only: [:dev, :test], runtime: false},
       {:tidewave, "~> 0.5", only: :dev}
     ]
