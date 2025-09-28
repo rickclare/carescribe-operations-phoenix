@@ -82,7 +82,7 @@ export default defineConfig({
   ],
   // Run your local dev server before starting the tests.
   webServer: {
-    command: "mix phx.server",
+    command: "mix do playwright.prepare, phx.server",
     port: 4444,
     reuseExistingServer: !process.env.CI,
     ignoreHTTPSErrors: true,

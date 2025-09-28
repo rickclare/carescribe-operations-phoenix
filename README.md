@@ -12,7 +12,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 ## Running Playwright tests
 
 ```sh
-MIX_ENV=e2e mix do ecto.create, ecto.migrate
+mix playwright.setup
 
 BUN_OPTIONS="" bun playwright test
 

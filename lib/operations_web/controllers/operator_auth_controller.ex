@@ -4,8 +4,9 @@ defmodule OperationsWeb.OperatorAuthController do
   alias Operations.Accounts
   alias OperationsWeb.OperatorAuth
 
-  plug Ueberauth
   require Logger
+
+  plug Ueberauth
 
   def callback(%{assigns: %{ueberauth_failure: %Ueberauth.Failure{} = failure}} = conn, _params) do
     Logger.error(failure)

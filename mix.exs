@@ -33,7 +33,12 @@ defmodule Operations.MixProject do
 
   def cli do
     [
-      preferred_envs: [precommit: :test, credo: :test, dialyzer: :test]
+      preferred_envs: [
+        precommit: :test,
+        "playwrigh
+t       .setup": :e2e,
+        "playwright.prepare": :e2e
+      ]
     ]
   end
 
@@ -101,9 +106,16 @@ defmodule Operations.MixProject do
   defp aliases do
     [
       setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.setup": ["ecto.create", "ecto.load", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      "playwright.setup": [
+        "ecto.create --quiet",
+        "ecto.load --quiet --skip-if-loaded",
+        "assets.setup",
+        "playwright.prepare"
+      ],
+      "playwright.prepare": ["ecto.migrate --quiet", "assets.build"],
       "assets.setup": [
         "bun.install --if-missing",
         "cmd '_build/bun --silent install'"
