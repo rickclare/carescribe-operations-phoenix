@@ -1,0 +1,75 @@
+## See https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+min_version = "1.13.6"
+
+#
+# [commit-msg.scripts.template_checker]
+# runner = "bash"
+#
+# skip_output = [
+#   "meta", # hide version and which hook running
+#   "success", # hide output from runners with exit code 0
+#   "summary",
+#   "execution",
+#   "skips"
+# ]
+#
+
+# [commit-msg.commands.commit-linting]
+# run = "bun --bun commitlint --edit {1}"
+# skip = ["merge", "rebase"]
+
+[pre-commit]
+parallel = true
+
+[pre-commit.commands.elixir-linting]
+tags = "backend,linter"
+glob = "*.{ex,exs}"
+run = "mix credo diff --from-git-ref HEAD --format=oneline --all {staged_files}"
+skip = ["merge", "rebase"]
+
+[pre-commit.commands.elixir-formatting]
+tags = "backend,format"
+glob = "*.{ex,exs,eex,heex}"
+run = 'echo "{staged_files}" > /dev/null; mix format --migrate --check-formatted'
+skip = ["merge", "rebase"]
+
+# [pre-commit.commands.elixir-type-checks]
+# tags = "backend,types"
+# glob = "*.{ex,exs}"
+# run = "mix dialyzer --quiet --format short"
+# skip = ["merge", "rebase"]
+
+# [pre-commit.commands.elixir-spec-checks]
+# tags = "backend,docs"
+# glob = "*.{ex,exs}"
+# run = "mix doctor"
+# skip = ["merge", "rebase"]
+
+[pre-commit.commands.prettier]
+tags = "frontend,format"
+glob = "*.{css,scss,js,ts,json,toml,yaml,yml,html,md}"
+run = "bun --bun --silent prettier --log-level=warn --check {staged_files} > /dev/null"
+skip = ["merge", "rebase"]
+
+[pre-commit.commands.stylelint]
+tags = "frontend,linter"
+glob = "*.{css,scss}"
+run = "bun --bun --silent stylelint {staged_files}"
+skip = ["merge", "rebase"]
+
+[pre-commit.commands.eslint]
+tags = "frontend,linter"
+glob = "{assets,playwright}/**/*.{ts,js}"
+run = "bun --bun --silent eslint --no-warn-ignored {staged_files}"
+skip = ["merge", "rebase"]
+
+[pre-commit.commands.tsc]
+tags = "frontend,linter"
+glob = "{assets,playwright}/**/*.{ts,js}"
+run = "bun --bun --silent tsc --noEmit --project tsconfig.json"
+skip = ["merge", "rebase"]
+
+[pre-commit.commands.typos]
+# See https://github.com/crate-ci/typos#install (e.g. `brew install typos-cli`)
+run = "typos"
+skip = ["merge", "rebase"]

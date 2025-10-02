@@ -1,0 +1,9 @@
+skip_output = [
+  "meta", # hide version and which hook running
+  "success", # hide output from runners with exit code 0
+  "summary",
+  "skips"
+]
+
+[pre-commit]
+exclude_tags = ["types"]

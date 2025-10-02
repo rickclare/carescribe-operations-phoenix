@@ -60,3 +60,5 @@ mise.local.toml
 .elixir-tools/
 .lexical/
 .expert/
+
+lefthook-local.toml

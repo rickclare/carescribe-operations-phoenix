@@ -7,3 +7,4 @@ extend-ignore-re = ["lts-jod", "AxeBuilder"]
 
 [default.extend-words]
 behaviour = "behaviour"
+initialise = "initialise"
