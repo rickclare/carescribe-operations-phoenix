@@ -5,12 +5,12 @@
     "build:figma_themes": "bun css/theme/figma/build_themes.js --input css/theme/figma/unified-variables.json --output css/theme/figma/themes.css"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.13",
-    "daisyui": "^5.1.25",
+    "@tailwindcss/cli": "^4.1.14",
+    "daisyui": "^5.1.26",
     "phoenix": "workspace:*",
     "phoenix_html": "workspace:*",
     "phoenix_live_view": "workspace:*",
-    "tailwindcss": "^4.1.13",
+    "tailwindcss": "^4.1.14",
     "topbar": "^3.0.0"
   }
 }

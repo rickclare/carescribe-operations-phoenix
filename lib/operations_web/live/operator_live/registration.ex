@@ -44,11 +44,7 @@ defmodule OperationsWeb.OperatorLive.Registration do
   end
 
   @impl true
-  def mount(
-        _params,
-        _session,
-        %{assigns: %{current_scope: %{operator: %Operator{}}}} = socket
-      ) do
+  def mount(_params, _session, %{assigns: %{current_scope: %{operator: %Operator{}}}} = socket) do
     {:ok, redirect(socket, to: OperationsWeb.OperatorAuth.signed_in_path(socket))}
   end
 
