@@ -161,10 +161,7 @@ defmodule OperationsWeb.Layouts do
             <.link href={~p"/operators/log-in"}>Log in</.link>
           </li>
           <li>
-            <.link href={
-              # ~p"/auth/google"
-              ~p"/admin/auth/active_admin/initialise"
-            }>
+            <.link href={~p"/operators/auth/google"}>
               SSO Log in
             </.link>
           </li>

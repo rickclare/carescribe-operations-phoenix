@@ -80,14 +80,13 @@ config :phoenix_live_view, :colocated_js,
   target_directory: Path.expand("../assets/node_modules/phoenix-colocated", __DIR__)
 
 config :ueberauth, Ueberauth,
-  # default is "/auth"
-  base_path: "/admin/auth",
+  base_path: "/operators/auth",
   providers: [
-    active_admin: {
+    google: {
       Ueberauth.Strategy.Google,
       [
-        request_path: "/admin/auth/active_admin/initialise",
-        callback_path: "/admin/auth/active_admin/callback"
+        request_path: "/operators/auth/google",
+        callback_path: "/operators/auth/google/callback"
       ]
     }
   ]

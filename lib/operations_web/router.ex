@@ -23,13 +23,11 @@ defmodule OperationsWeb.Router do
     get "/", PageController, :home
   end
 
-  scope "/admin/auth", OperationsWeb do
+  scope "/operators/auth", OperationsWeb do
     pipe_through :browser
 
-    # get "/:provider", OperatorAuthController, :request
-    # get "/:provider/callback", OperatorAuthController, :callback
-    get "/active_admin/initialise", OperatorAuthController, :request
-    get "/active_admin/callback", OperatorAuthController, :callback
+    get "/:provider", OperatorAuthController, :request
+    get "/:provider/callback", OperatorAuthController, :callback
   end
 
   # Other scopes may use custom stacks.
