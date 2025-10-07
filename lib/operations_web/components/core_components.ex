@@ -60,7 +60,7 @@ defmodule OperationsWeb.CoreComponents do
       id={@id}
       phx-click={JS.push("lv:clear-flash", value: %{key: @kind}) |> hide("##{@id}")}
       role="alert"
-      class="toast toast-top toast-end z-50"
+      class={["toast toast-top toast-end z-50", @kind != :error && delayed_hide_classes()]}
       {@rest}
     >
       <div class={[
@@ -440,10 +440,20 @@ defmodule OperationsWeb.CoreComponents do
     JS.hide(js,
       to: selector,
       time: 200,
-      transition:
-        {"transition-all ease-in duration-200", "opacity-100 translate-y-0 sm:scale-100",
-         "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"}
+      transition: {
+        "motion-safe:transition-all ease-in duration-200",
+        "opacity-100 translate-y-0 sm:scale-100",
+        "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      }
     )
+  end
+
+  defp delayed_hide_classes do
+    ~w[
+      motion-safe:transition-all ease-in duration-200 delay-5000
+      starting:opacity-100 starting:translate-y-0 sm:starting:scale-100
+      opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95
+    ]
   end
 
   @doc """

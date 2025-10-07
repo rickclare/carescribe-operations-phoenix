@@ -170,4 +170,36 @@ defmodule OperationsWeb.Layouts do
     </nav>
     """
   end
+
+  def app_environment(assigns) do
+    ~H"""
+    <div
+      aria-hidden="true"
+      class={[
+        "z-100 bg-[orange] text-[white] fixed right-0 bottom-0 w-screen",
+        "cursor-pointer px-2 py-1 text-center text-xs font-medium md:w-auto md:rounded-tl",
+        Application.get_env(:operations, :hide_environment_info) && "hidden"
+      ]}
+      phx-click={
+        JS.hide(
+          time: 200,
+          transition: {"motion-safe:transition ease-in duration-200", "opacity-100", "opacity-0"}
+        )
+      }
+    >
+      {case Application.get_env(:operations, :environment, "Development") do
+        :dev -> "Development"
+        :prod -> "Production"
+        val -> to_string(val) |> String.capitalize()
+      end}
+
+      <span class="sm:hidden">[xs]</span>
+      <span class="hidden sm:max-md:inline">[sm]</span>
+      <span class="hidden md:max-lg:inline">[md]</span>
+      <span class="hidden lg:max-xl:inline">[lg]</span>
+      <span class="hidden xl:max-2xl:inline">[xl]</span>
+      <span class="hidden 2xl:inline">[2xl]</span>
+    </div>
+    """
+  end
 end
