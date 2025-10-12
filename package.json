@@ -1,16 +1,13 @@
 {
   "private": true,
   "workspaces": [
-    "deps/*",
     "assets"
   ],
   "scripts": {
     "deps:update": "bun x --bun npm-check-updates@latest --interactive --root --workspace=assets --format=group --packageManager=bun --install=always"
   },
-  "dependencies": {
-    "@axe-core/playwright": "^4.10.2"
-  },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@eslint/js": "^9.37.0",
     "@playwright/test": "^1.56.0",
     "eslint": "^9.37.0",
@@ -25,6 +22,15 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.0",
     "watchman": "^1.0.0"
+  },
+  "catalog": {
+    "@tailwindcss/cli": "^4.1.14",
+    "daisyui": "^5.1.27",
+    "phoenix": "./deps/phoenix",
+    "phoenix_html": "./deps/phoenix_html",
+    "phoenix_live_view": "./deps/phoenix_live_view",
+    "tailwindcss": "^4.1.14",
+    "topbar": "^3.0.0"
   },
   "trustedDependencies": [
     "@parcel/watcher"

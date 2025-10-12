@@ -1,2 +1,7 @@
 [install]
-linker = "isolated"
+linker = "isolated" # "isolated" is the default, as of Bun v1.3+
+# TODO: add minimumReleaseAge back in
+# minimumReleaseAge = 604800 # 7 days in seconds
+
+[install.security]
+provider = "@socketsecurity/bun-security-scanner"

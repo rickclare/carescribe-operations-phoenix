@@ -5,12 +5,12 @@
     "build:figma_themes": "bun css/theme/figma/build_themes.js --input css/theme/figma/unified-variables.json --output css/theme/figma/themes.css"
   },
   "dependencies": {
-    "@tailwindcss/cli": "^4.1.14",
-    "daisyui": "^5.1.27",
-    "phoenix": "workspace:*",
-    "phoenix_html": "workspace:*",
-    "phoenix_live_view": "workspace:*",
-    "tailwindcss": "^4.1.14",
-    "topbar": "^3.0.0"
+    "@tailwindcss/cli": "catalog:",
+    "daisyui": "catalog:",
+    "phoenix": "catalog:",
+    "phoenix_html": "catalog:",
+    "phoenix_live_view": "catalog:",
+    "tailwindcss": "catalog:",
+    "topbar": "catalog:"
   }
 }
