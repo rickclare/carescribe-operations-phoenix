@@ -10,6 +10,7 @@
     "@axe-core/playwright": "^4.10.2",
     "@eslint/js": "^9.37.0",
     "@playwright/test": "^1.56.0",
+    "@socketsecurity/bun-security-scanner": "^1.1.0",
     "eslint": "^9.37.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.4.0",
@@ -20,12 +21,12 @@
     "stylelint-config-standard": "^39.0.1",
     "stylelint-prettier": "^5.0.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.0",
+    "typescript-eslint": "^8.46.1",
     "watchman": "^1.0.0"
   },
   "catalog": {
     "@tailwindcss/cli": "^4.1.14",
-    "daisyui": "^5.1.27",
+    "daisyui": "^5.3.1",
     "phoenix": "./deps/phoenix",
     "phoenix_html": "./deps/phoenix_html",
     "phoenix_live_view": "./deps/phoenix_live_view",
