@@ -24,7 +24,7 @@ parallel = true
 [pre-commit.commands.elixir-linting]
 tags = "backend,linter"
 glob = "*.{ex,exs}"
-run = "mix credo diff --from-git-ref HEAD --format=oneline --all {staged_files}"
+run = "mix credo diff --from-git-ref HEAD --format=oneline --all --min-priority=low {staged_files}"
 skip = ["merge", "rebase"]
 
 [pre-commit.commands.elixir-formatting]

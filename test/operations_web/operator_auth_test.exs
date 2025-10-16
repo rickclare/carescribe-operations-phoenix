@@ -1,4 +1,5 @@
 # credo:disable-for-this-file Credo.Check.Refactor.VariableRebinding
+# credo:disable-for-this-file Credo.Check.Design.DuplicatedCode
 defmodule OperationsWeb.OperatorAuthTest do
   use OperationsWeb.ConnCase, async: true
 

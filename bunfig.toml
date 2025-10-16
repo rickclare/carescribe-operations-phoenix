@@ -1,7 +1,11 @@
 [install]
-linker = "isolated" # "isolated" is the default, as of Bun v1.3+
-# TODO: add minimumReleaseAge back in
-# minimumReleaseAge = 604800 # 7 days in seconds
+# "isolated" is the default, as of Bun v1.3+
+linker = "isolated"
 
+# 259200 seconds == 3 days
+minimumReleaseAge = 259200
+minimumReleaseAgeExcludes = ["daisyui", "prettier-plugin-tailwindcss"]
+
+## Disabling security scanner for now, as it frequently times-out
 # [install.security]
 # scanner = "@socketsecurity/bun-security-scanner"

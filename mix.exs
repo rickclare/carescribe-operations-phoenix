@@ -5,7 +5,7 @@ defmodule Operations.MixProject do
     [
       app: :operations,
       version: "0.1.0",
-      elixir: "~> 1.18",
+      elixir: "~> 1.19",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -118,7 +118,7 @@ t       .setup": :e2e,
       "playwright.prepare": ["ecto.migrate --quiet", "assets.build"],
       "assets.setup": [
         "bun.install --if-missing",
-        "cmd '_build/bun --silent install'"
+        "cmd _build/bun --silent install"
       ],
       "assets.build": [
         "compile",
@@ -127,7 +127,7 @@ t       .setup": :e2e,
       ],
       "assets.setup_deploy": [
         "bun.install --if-missing",
-        "cmd '_build/bun install --production --frozen-lockfile'"
+        "cmd _build/bun install --production --frozen-lockfile"
       ],
       "assets.deploy": [
         "bun css --minify",
@@ -146,11 +146,11 @@ t       .setup": :e2e,
         "compile --warnings-as-errors --all-warnings",
         "credo --all --format=oneline --min-priority=low",
         # "dialyzer --quiet",
-        "cmd '_build/bun --silent install'",
-        ~s{cmd '_build/bun --bun prettier --log-level=warn --check --ignore-unknown "**"'},
-        "cmd '_build/bun --bun stylelint assets/css/**/*.css'",
-        "cmd '_build/bun --bun eslint'",
-        "cmd '_build/bun --bun tsc --noEmit --project tsconfig.json'"
+        "cmd _build/bun --silent install",
+        ~s{cmd _build/bun --bun prettier --log-level=warn --check --ignore-unknown "**"},
+        "cmd _build/bun --bun stylelint assets/css/**/*.css",
+        "cmd _build/bun --bun eslint",
+        "cmd _build/bun --bun tsc --noEmit --project tsconfig.json"
       ]
     ]
   end
