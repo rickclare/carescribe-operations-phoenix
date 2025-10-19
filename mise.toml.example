@@ -5,7 +5,7 @@
 _.path = "./_build"
 DATABASE_PORT = 543x
 PHX_HOST="ops.carescribe.test"
-BUN_OPTIONS="--bun"
+# BUN_OPTIONS="--bun"
 COMPOSE_BAKE = true
 CFLAGS="-O2 -g -fno-stack-check"
 KERL_CONFIGURE_OPTIONS="--without-javac --with-ssl=/opt/homebrew/opt/openssl --with-wx-config=/opt/homebrew/opt/wxwidgets/bin/wx-config"
