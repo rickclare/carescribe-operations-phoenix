@@ -1,16 +1,20 @@
 ## See https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
-min_version = "1.13.6"
+min_version = "2.0.0"
 
 #
 # [commit-msg.scripts.template_checker]
 # runner = "bash"
 #
-# skip_output = [
-#   "meta", # hide version and which hook running
-#   "success", # hide output from runners with exit code 0
-#   "summary",
-#   "execution",
-#   "skips"
+# output = [
+#   "meta",           # Print lefthook version
+#   "summary",        # Print summary block (successful and failed steps)
+#   "empty_summary",  # Print summary heading when there are no steps to run
+#   "success",        # Print successful steps
+#   "failure",        # Print failed steps printing
+#   "execution",      # Print any execution logs
+#   "execution_out",  # Print execution output
+#   "execution_info", # Print `EXECUTE > ...` logging
+#   "skips"           # Print "skip" (i.e. no files matched)
 # ]
 #
 
