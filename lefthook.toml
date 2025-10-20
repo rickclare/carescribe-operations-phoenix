@@ -1,10 +1,6 @@
 ## See https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
 min_version = "2.0.0"
 
-#
-# [commit-msg.scripts.template_checker]
-# runner = "bash"
-#
 # output = [
 #   "meta",           # Print lefthook version
 #   "summary",        # Print summary block (successful and failed steps)
@@ -16,7 +12,9 @@ min_version = "2.0.0"
 #   "execution_info", # Print `EXECUTE > ...` logging
 #   "skips"           # Print "skip" (i.e. no files matched)
 # ]
-#
+
+# [commit-msg.scripts.template_checker]
+# runner = "bash"
 
 # [commit-msg.commands.commit-linting]
 # run = "bun --bun commitlint --edit {1}"

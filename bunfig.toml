@@ -3,8 +3,8 @@
 linker = "isolated"
 
 # 259200 seconds == 3 days
-minimumReleaseAge = 259200
-minimumReleaseAgeExcludes = ["daisyui", "prettier-plugin-tailwindcss"]
+# minimumReleaseAge = 259200
+minimumReleaseAgeExcludes = []
 
 ## Disabling security scanner for now, as it frequently times-out
 # [install.security]
