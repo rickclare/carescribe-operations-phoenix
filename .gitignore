@@ -42,6 +42,7 @@ operations-*.tar
 npm-debug.log
 /node_modules/
 /assets/node_modules/
+/playwright/node_modules/
 
 # local environment configuration
 mise.toml
@@ -54,6 +55,7 @@ mise.local.toml
 *.plt.hash
 
 /playwright/test-results/
+/playwright/achecker-results/
 
 # Language servers
 .elixir_ls/

@@ -3,7 +3,7 @@ extend-exclude = ["assets/vendor/", "assets/css/theme/figma/", "eslint.config.ts
 
 [default]
 locale = "en-us"
-extend-ignore-re = ["lts-jod", "AxeBuilder"]
+extend-ignore-re = ["lts-jod", "AxeBuilder", "axeResult"]
 
 [default.extend-words]
 behaviour = "behaviour"

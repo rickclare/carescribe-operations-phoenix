@@ -1,17 +1,13 @@
 {
   "private": true,
   "workspaces": [
-    "assets"
+    "assets",
+    "playwright"
   ],
-  "scripts": {
-    "deps:update": "bun x --bun npm-check-updates@latest --interactive --root --workspace=assets --format=group --packageManager=bun --install=always"
-  },
   "devDependencies": {
-    "@axe-core/playwright": "^4.10.2",
-    "@eslint/js": "^9.37.0",
-    "@playwright/test": "^1.56.1",
+    "@eslint/js": "^9.38.0",
     "@socketsecurity/bun-security-scanner": "^1.1.1",
-    "eslint": "^9.37.0",
+    "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.4.0",
     "prettier": "^3.6.2",

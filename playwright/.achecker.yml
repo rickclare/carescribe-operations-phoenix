@@ -1,0 +1,12 @@
+outputFolder: achecker-results
+
+failLevels:
+  - violation
+  # - potentialviolation
+
+reportLevels:
+  - violation
+  # - potentialviolation
+  # - recommendation
+  # - potentialrecommendation
+  # - manual

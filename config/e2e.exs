@@ -54,6 +54,9 @@ config :operations, OperationsWeb.Endpoint,
     bun: {Bun, :install_and_run, [:css, ~w(--watch)]}
   ]
 
+# Hide the app-environment page-layout element
+config :operations, :hide_app_environment, true
+
 # Enable dev routes for dashboard and mailbox
 config :operations, dev_routes: true
 

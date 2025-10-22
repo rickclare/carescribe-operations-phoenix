@@ -178,7 +178,7 @@ defmodule OperationsWeb.Layouts do
       class={[
         "z-100 bg-[orange] text-[white] fixed right-0 bottom-0 w-screen",
         "cursor-pointer px-2 py-1 text-center text-xs font-medium md:w-auto md:rounded-tl",
-        Application.get_env(:operations, :hide_environment_info) && "hidden"
+        Application.get_env(:operations, :hide_app_environment) && "hidden"
       ]}
       phx-click={
         JS.hide(

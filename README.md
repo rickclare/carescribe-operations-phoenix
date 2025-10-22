@@ -14,9 +14,9 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 ```sh
 mix playwright.setup
 
-BUN_OPTIONS="" bun playwright test
-
-BUN_OPTIONS="" bun playwright test --ui
+BUN_OPTIONS="" bun --cwd=playwright playwright test
+# or
+BUN_OPTIONS="" bun --cwd=playwright playwright test --ui
 ```
 
 ## Learn more

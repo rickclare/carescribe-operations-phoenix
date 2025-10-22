@@ -14,6 +14,9 @@ config :operations, OperationsWeb.Endpoint,
 # See https://hexdocs.pm/phoenix/using_ssl.html
 config :operations, OperationsWeb.Endpoint, force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
+# Hide th app-environment page-layout element
+config :operations, :hide_app_environment, true
+
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Req
 

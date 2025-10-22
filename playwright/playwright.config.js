@@ -3,9 +3,9 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   // Look for test files in the "tests" directory, relative to this configuration file.
-  testDir: "./playwright/tests",
-  outputDir: "./playwright/test-results",
-  snapshotDir: "./playwright/snapshots",
+  testDir: "./tests",
+  outputDir: "./test-results",
+  snapshotDir: "./snapshots",
   snapshotPathTemplate: "{snapshotDir}/{testFileDir}/{testFileName}/{arg}{-projectName}{ext}",
 
   // Run all tests in parallel.
@@ -21,9 +21,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI
-    ? [["github"], ["html", { outputFolder: "./playwright/report" }]]
-    : "dot",
+  reporter: process.env.CI ? [["github"], ["html", { outputFolder: "./report" }]] : "dot",
 
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
@@ -82,7 +80,7 @@ export default defineConfig({
   ],
   // Run your local dev server before starting the tests.
   webServer: {
-    command: "mix do playwright.prepare, phx.server",
+    command: "cd .. && mix do playwright.prepare + phx.server",
     port: 4444,
     reuseExistingServer: !process.env.CI,
     ignoreHTTPSErrors: true,

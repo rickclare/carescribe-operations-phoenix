@@ -8,13 +8,13 @@ export default tsEslint.config(
   ...tsEslint.configs.recommendedTypeChecked,
   {
     ignores: [
-      "*.config.*js",
       "_build/",
       "deps/",
       "local_deps/",
       "priv/static/",
       "assets/vendor/",
       "playwright/report/",
+      "playwright/*.config.js",
     ],
   },
   {
