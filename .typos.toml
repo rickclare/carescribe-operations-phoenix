@@ -6,5 +6,6 @@ locale = "en-us"
 extend-ignore-re = ["lts-jod", "AxeBuilder", "axeResult"]
 
 [default.extend-words]
+axe = "axe"
 behaviour = "behaviour"
 initialise = "initialise"
