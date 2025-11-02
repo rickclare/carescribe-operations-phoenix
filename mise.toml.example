@@ -1,5 +1,5 @@
 [tools]
-# node = "lts-jod" # Node required for Playwright tests
+# node = "lts-krypton" # Node required for Playwright tests
 
 [env]
 _.path = "./_build"
