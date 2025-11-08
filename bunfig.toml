@@ -1,5 +1,5 @@
 [install]
-linker = "isolated" # "isolated" is the default, as of Bun v1.3+
+linker = "isolated"
 # minimumReleaseAge = 259200 # 3 days in seconds
 minimumReleaseAgeExcludes = []
 

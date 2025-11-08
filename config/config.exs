@@ -9,7 +9,7 @@ import Config
 
 # Configure bun (the version is required)
 config :bun,
-  version: "1.3.1",
+  version: "1.3.2",
   js: [
     args: ~w(
       build js/app.js
