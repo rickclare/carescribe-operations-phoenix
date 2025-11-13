@@ -1,5 +1,5 @@
 ## See https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
-min_version = "2.0.2"
+min_version = "2.0.4"
 
 # output = [
 #   "meta",           # Print lefthook version

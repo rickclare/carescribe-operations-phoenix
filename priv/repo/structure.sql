@@ -2,10 +2,10 @@
 -- PostgreSQL database dump
 --
 
-\restrict KJy8Pu619G0pK2OqnYwWoNCyG6PhfgoTditsd4quwi1x0Xc0SlzhaCM5fTIeweD
+\restrict Oh76aKjXBHccQdAMkxqwbEHWEPvqzoHvZ47xATBZlCzqy2Dc7p4tWzapDcsMVpX
 
--- Dumped from database version 18.0
--- Dumped by pg_dump version 18.0
+-- Dumped from database version 18.1
+-- Dumped by pg_dump version 18.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -185,6 +185,6 @@ ALTER TABLE ONLY public.operators_tokens
 -- PostgreSQL database dump complete
 --
 
-\unrestrict KJy8Pu619G0pK2OqnYwWoNCyG6PhfgoTditsd4quwi1x0Xc0SlzhaCM5fTIeweD
+\unrestrict Oh76aKjXBHccQdAMkxqwbEHWEPvqzoHvZ47xATBZlCzqy2Dc7p4tWzapDcsMVpX
 
 INSERT INTO public."schema_migrations" (version) VALUES (20250912201343);
