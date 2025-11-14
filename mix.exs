@@ -12,6 +12,9 @@ defmodule Operations.MixProject do
       deps: deps(),
       compilers: [:phoenix_live_view] ++ Mix.compilers(),
       listeners: [Phoenix.CodeReloader],
+      test_ignore_filters: [
+        ~r{/credo/custom_check/.+\.ex$}
+      ],
       gettext: [
         on_obsolete: :mark_as_obsolete,
         sort_by_msgid: :case_sensitive,
