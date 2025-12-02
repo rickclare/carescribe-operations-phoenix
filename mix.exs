@@ -94,7 +94,7 @@ t       .setup": :e2e,
       {:ueberauth_google, "~> 0.10"},
       #
       {:credo, "~> 1.7.12", only: [:dev, :test], runtime: false},
-      {:styler, "~> 1.9", only: [:dev, :test], runtime: false},
+      {:styler, "~> 1.10", only: [:dev, :test], runtime: false},
       {:tailwind_formatter, "~> 0.4.2", only: [:dev, :test], runtime: false},
       {:tidewave, "~> 0.5", only: :dev}
     ]
@@ -150,10 +150,10 @@ t       .setup": :e2e,
         "credo --all --format=oneline --min-priority=low",
         # "dialyzer --quiet",
         "cmd _build/bun --silent install",
-        ~s{cmd _build/bun --bun prettier --log-level=warn --check --ignore-unknown "**"},
-        "cmd _build/bun --bun stylelint assets/css/**/*.css",
-        "cmd _build/bun --bun eslint",
-        "cmd _build/bun --bun tsc --noEmit --project tsconfig.json"
+        ~s{cmd _build/bun prettier --log-level=warn --check --ignore-unknown "**"},
+        "cmd _build/bun stylelint assets/css/**/*.css",
+        "cmd _build/bun eslint",
+        "cmd _build/bun tsc --noEmit --project tsconfig.json"
       ]
     ]
   end

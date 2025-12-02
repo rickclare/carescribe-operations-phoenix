@@ -17,7 +17,7 @@ min_version = "2.0.4"
 # runner = "bash"
 
 # [commit-msg.commands.commit-linting]
-# run = "bun --bun commitlint --edit {1}"
+# run = "bun commitlint --edit {1}"
 # skip = ["merge", "rebase"]
 
 [pre-commit]
@@ -26,7 +26,8 @@ parallel = true
 [pre-commit.commands.elixir-linting]
 tags = "backend,linter"
 glob = "*.{ex,exs}"
-run = "mix credo diff --from-git-ref HEAD --format=oneline --all --min-priority=low {staged_files}"
+# run = "mix credo diff --from-git-ref HEAD --format=oneline --all --min-priority=low {staged_files}"
+run = 'echo "{staged_files}" > /dev/null; mix credo --all --format=oneline --min-priority=low'
 skip = ["merge", "rebase"]
 
 [pre-commit.commands.elixir-formatting]
@@ -38,37 +39,37 @@ skip = ["merge", "rebase"]
 # [pre-commit.commands.elixir-type-checks]
 # tags = "backend,types"
 # glob = "*.{ex,exs}"
-# run = "mix dialyzer --quiet --format short"
+# run = 'echo "{staged_files}" > /dev/null; mix dialyzer --quiet --format short'
 # skip = ["merge", "rebase"]
 
 # [pre-commit.commands.elixir-spec-checks]
 # tags = "backend,docs"
 # glob = "*.{ex,exs}"
-# run = "mix doctor"
+# run = 'echo "{staged_files}" > /dev/null; mix doctor'
 # skip = ["merge", "rebase"]
 
 [pre-commit.commands.prettier]
 tags = "frontend,format"
 glob = "*.{css,scss,js,ts,json,toml,yaml,yml,html,md}"
-run = "bun --bun --silent prettier --log-level=warn --check {staged_files} > /dev/null"
+run = "_build/bun --silent prettier --log-level=warn --check {staged_files} > /dev/null"
 skip = ["merge", "rebase"]
 
 [pre-commit.commands.stylelint]
 tags = "frontend,linter"
 glob = "*.{css,scss}"
-run = "bun --bun --silent stylelint {staged_files}"
+run = "_build/bun --silent stylelint {staged_files}"
 skip = ["merge", "rebase"]
 
 [pre-commit.commands.eslint]
 tags = "frontend,linter"
 glob = "{assets,playwright}/**/*.{ts,js}"
-run = "bun --bun --silent eslint --no-warn-ignored {staged_files}"
+run = "_build/bun --silent eslint --no-warn-ignored {staged_files}"
 skip = ["merge", "rebase"]
 
 [pre-commit.commands.tsc]
 tags = "frontend,linter"
 glob = "{assets,playwright}/**/*.{ts,js}"
-run = "bun --bun --silent tsc --noEmit --project tsconfig.json"
+run = 'echo "{staged_files}" > /dev/null; _build/bun --silent tsc --noEmit --project tsconfig.json'
 skip = ["merge", "rebase"]
 
 [pre-commit.commands.typos]

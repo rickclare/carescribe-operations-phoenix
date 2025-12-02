@@ -82,6 +82,7 @@ defmodule OperationsWeb.OperatorAuth do
     else
       conn = fetch_cookies(conn, signed: [@remember_me_cookie])
 
+      # credo:disable-for-next-line Credo.Check.Refactor.MatchInCondition
       if token = conn.cookies[@remember_me_cookie] do
         {token, conn |> put_token_in_session(token) |> put_session(:operator_remember_me, true)}
       end

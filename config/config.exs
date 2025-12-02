@@ -23,7 +23,7 @@ config :bun,
   ],
   css: [
     args: ~w(
-      --bun tailwindcss
+      tailwindcss
       --input=css/app.css
       --output=../priv/static/assets/app.css
     ),
