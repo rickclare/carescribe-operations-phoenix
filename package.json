@@ -1,16 +1,27 @@
 {
   "private": true,
-  "workspaces": [
-    "assets",
-    "playwright"
-  ],
+  "workspaces": {
+    "packages": [
+      "assets",
+      "playwright"
+    ],
+    "catalog": {
+      "@tailwindcss/cli": "^4.1.17",
+      "daisyui": "^5.5.7",
+      "phoenix": "./deps/phoenix",
+      "phoenix_html": "./deps/phoenix_html",
+      "phoenix_live_view": "./deps/phoenix_live_view",
+      "tailwindcss": "^4.1.17",
+      "topbar": "^3.0.0"
+    }
+  },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@socketsecurity/bun-security-scanner": "^1.1.2",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.5.0",
-    "prettier": "^3.7.3",
+    "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "prettier-plugin-toml": "^2.0.6",
     "stylelint": "^16.26.1",
@@ -19,15 +30,6 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.48.1",
     "watchman": "^1.0.0"
-  },
-  "catalog": {
-    "@tailwindcss/cli": "^4.1.17",
-    "daisyui": "^5.5.5",
-    "phoenix": "./deps/phoenix",
-    "phoenix_html": "./deps/phoenix_html",
-    "phoenix_live_view": "./deps/phoenix_live_view",
-    "tailwindcss": "^4.1.17",
-    "topbar": "^3.0.0"
   },
   "trustedDependencies": [
     "@parcel/watcher"
