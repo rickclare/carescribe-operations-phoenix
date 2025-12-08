@@ -47,7 +47,7 @@
   ],
   "catalog": {
     "@tailwindcss/cli": "^4.1.17",
-    "daisyui": "^5.5.7",
+    "daisyui": "^5.5.8",
     "phoenix": "./deps/phoenix",
     "phoenix_html": "./deps/phoenix_html",
     "phoenix_live_view": "./deps/phoenix_live_view",
@@ -833,7 +833,7 @@
 
     "cssstyle": ["cssstyle@5.3.3", "", { "dependencies": { "@asamuzakjp/css-color": "^4.0.3", "@csstools/css-syntax-patches-for-csstree": "^1.0.14", "css-tree": "^3.1.0" } }, "sha512-OytmFH+13/QXONJcC75QNdMtKpceNk3u8ThBjyyYjkEcy/ekBwR1mMAuNvi3gdBPW3N5TlCzQ0WZw8H0lN/bDw=="],
 
-    "daisyui": ["daisyui@5.5.7", "", {}, "sha512-XXpGjzlCV2ui4ONtM8pK3znYRxrQRJZLwmyRt/SPpVAP+e9ErTXMFl9JICQmZ+7HD8ilsuo9Sd3TrTmSYqVmQA=="],
+    "daisyui": ["daisyui@5.5.8", "", {}, "sha512-6psL9jIEOFOw68V10j/BKCWcRgx8dh81mmNxShr+g7HDM6UHNoPharlp9zq/PQkHNuGU1ZQsajR3HgpvavbRKQ=="],
 
     "data-uri-to-buffer": ["data-uri-to-buffer@6.0.2", "", {}, "sha512-7hvf7/GW8e86rW0ptuwS3OcBGDjIi6SZva7hCyWC0yYry2cOPmLIjXAUHI6DK2HsnwJd9ifmt57i8eV2n4YNpw=="],
 

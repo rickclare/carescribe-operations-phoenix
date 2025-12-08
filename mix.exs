@@ -64,7 +64,7 @@ t       .setup": :e2e,
       {:phoenix_live_view, "~> 1.1"},
       {:lazy_html, ">= 0.1.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.8.3"},
-      {:bun, "~> 1.4", runtime: Mix.env() in [:dev, :e2e]},
+      {:bun, "~> 1.6", runtime: Mix.env() in [:dev, :e2e]},
       {
         :heroicons,
         github: "tailwindlabs/heroicons",
