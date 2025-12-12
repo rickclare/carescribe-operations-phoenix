@@ -7,7 +7,7 @@
 # General application configuration
 import Config
 
-# Configure bun (the version is required)
+# Configure Bun (the version is required)
 config :bun,
   version: "1.3.4",
   js: [
@@ -31,12 +31,12 @@ config :bun,
     env: %{}
   ]
 
-# Configures Elixir's Logger
+# Configure Elixir's Logger
 config :logger, :default_formatter,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Configures the mailer
+# Configure the mailer
 #
 # By default it uses the "Local" adapter which stores the emails
 # locally. You can see the emails in your browser, at "/dev/mailbox".
@@ -45,7 +45,7 @@ config :logger, :default_formatter,
 # at the `config/runtime.exs`.
 config :operations, Operations.Mailer, adapter: Swoosh.Adapters.Local
 
-# Configures the endpoint
+# Configure the endpoint
 config :operations, OperationsWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,

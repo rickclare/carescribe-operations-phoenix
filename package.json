@@ -6,12 +6,12 @@
       "playwright"
     ],
     "catalog": {
-      "@tailwindcss/cli": "^4.1.17",
-      "daisyui": "^5.5.8",
+      "@tailwindcss/cli": "^4.1.18",
+      "daisyui": "^5.5.13",
       "phoenix": "./deps/phoenix",
       "phoenix_html": "./deps/phoenix_html",
       "phoenix_live_view": "./deps/phoenix_live_view",
-      "tailwindcss": "^4.1.17",
+      "tailwindcss": "^4.1.18",
       "topbar": "^3.0.0"
     }
   },
@@ -28,7 +28,7 @@
     "stylelint-config-standard": "^39.0.1",
     "stylelint-prettier": "^5.0.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.48.1",
+    "typescript-eslint": "^8.49.0",
     "watchman": "^1.0.0"
   },
   "trustedDependencies": [

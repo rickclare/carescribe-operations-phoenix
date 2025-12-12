@@ -11,13 +11,20 @@ config :logger, level: :info
 config :operations, OperationsWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
-# See https://hexdocs.pm/phoenix/using_ssl.html
-config :operations, OperationsWeb.Endpoint, force_ssl: [rewrite_on: [:x_forwarded_proto]]
+# Force using SSL in production. This also sets the "strict-security-transport" header,
+# known as HSTS. If you have a health check endpoint, you may want to exclude it below.
+# Note `:force_ssl` is required to be set at compile-time.
+config :operations, OperationsWeb.Endpoint,
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  exclude: [
+    # paths: ["/health"],
+    hosts: ["localhost", "127.0.0.1"]
+  ]
 
-# Hide th app-environment page-layout element
+# Hide the app-environment page-layout element
 config :operations, :hide_app_environment, true
 
-# Configures Swoosh API Client
+# Configure Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Req
 
 # Runtime production configuration, including reading

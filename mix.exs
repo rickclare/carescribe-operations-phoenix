@@ -55,7 +55,7 @@ t       .setup": :e2e,
   defp deps do
     [
       {:bcrypt_elixir, "~> 3.0"},
-      {:phoenix, "~> 1.8.0"},
+      {:phoenix, "~> 1.8.3"},
       {:phoenix_ecto, "~> 4.7"},
       {:ecto_sql, "~> 3.13"},
       {:postgrex, ">= 0.0.0"},
@@ -137,12 +137,7 @@ t       .setup": :e2e,
         "bun js --minify",
         "phx.digest"
       ],
-      precommit: [
-        "compile --warning-as-errors",
-        "deps.unlock --unused",
-        "format",
-        "test"
-      ],
+      precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"],
       "dev.checks": [
         "format --dry-run --check-formatted",
         "gettext.extract --check-up-to-date",

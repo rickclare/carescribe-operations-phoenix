@@ -24,7 +24,8 @@ defmodule OperationsWeb.Endpoint do
     at: "/",
     from: :operations,
     gzip: not code_reloading?,
-    only: OperationsWeb.static_paths()
+    only: OperationsWeb.static_paths(),
+    raise_on_missing_only: code_reloading?
 
   if Code.ensure_loaded?(Tidewave) do
     plug Tidewave

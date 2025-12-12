@@ -1,5 +1,5 @@
 # https://github.com/blopker/codebook?tab=readme-ov-file#configuration-options
 dictionaries = ["en_us"]
 
-words = ["carescribe", "axe", "behaviour", "initialise"]
+words = ["carescribe", "axe", "behaviour", "initialise", "programmatically"]
 ignore_paths = []

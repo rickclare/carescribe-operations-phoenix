@@ -14,14 +14,14 @@ config :operations, Operations.Repo,
   port: "DATABASE_PORT" |> System.get_env("5432") |> String.to_integer(),
   pool_size: 10
 
-# Watch static and templates for browser reloading.
+# Reload browser tabs when matching files change.
 config :operations, OperationsWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
     patterns: [
-      ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg|webp|avif)$",
-      ~r"priv/gettext/.*(po)$",
-      ~r"lib/operations_web/(?:controllers|live|components|router)/?.*\.(ex|heex)$"
+      ~r"priv/static/(?!uploads/).*\.(js|css|png|jpeg|jpg|gif|svg|webp|avif)$"E,
+      ~r"priv/gettext/.*\.po$"E,
+      ~r"lib/operations_web/(controllers|live|components)/.*\.(ex|heex)$"E
     ]
   ]
 

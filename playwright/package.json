@@ -4,7 +4,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
     "@playwright/test": "^1.57.0",
-    "accessibility-checker": "^4.0.9",
-    "accessibility-checker-engine": "^4.0.9"
+    "accessibility-checker": "^4.0.10",
+    "accessibility-checker-engine": "^4.0.10"
   }
 }

@@ -4,6 +4,7 @@ This is a web application written using the Phoenix web framework.
 
 - Use `mix precommit` alias when you are done with all changes and fix any pending issues
 - Use the already included and available `:req` (`Req`) library for HTTP requests, **avoid** `:httpoison`, `:tesla`, and `:httpc`. Req is included by default and is the preferred HTTP client for Phoenix apps
+
 ### Phoenix v1.8 guidelines
 
 - **Always** begin your LiveView templates with `<Layouts.app flash={@flash} ...>` which wraps all inner content
@@ -13,72 +14,38 @@ This is a web application written using the Phoenix web framework.
   - **Always** fix the `current_scope` error by moving your routes to the proper `live_session` and ensure you pass `current_scope` as needed
 - Phoenix v1.8 moved the `<.flash_group>` component to the `Layouts` module. You are **forbidden** from calling `<.flash_group>` outside of the `layouts.ex` module
 - Out of the box, `core_components.ex` imports an `<.icon name="hero-x-mark" class="w-5 h-5"/>` component for for hero icons. **Always** use the `<.icon>` component for icons, **never** use `Heroicons` modules or similar
-- **Always** use the imported `<.input>` component for form inputs from `core_components.ex` when available. `<.input>` is imported and using it will will save steps and prevent errors
+- **Always** use the imported `<.input>` component for form inputs from `core_components.ex` when available. `<.input>` is imported and using it will save steps and prevent errors
 - If you override the default input classes (`<.input class="myclass px-2 py-1 rounded-lg">)`) class with your own values, no default classes are inherited, so your
 custom classes must fully style the input
 
-<!-- phoenix-gen-auth-start -->
-## Authentication
+### JS and CSS guidelines
 
-- **Always** handle authentication flow at the router level with proper redirects
-- **Always** be mindful of where to place routes. `phx.gen.auth` creates multiple router plugs and `live_session` scopes:
-  - A plug `:fetch_current_scope_for_operator` that is included in the default browser pipeline
-  - A plug `:require_authenticated_operator` that redirects to the log in page when the operator is not authenticated
-  - A `live_session :current_operator` scope - for routes that need the current operator but don't require authentication, similar to `:fetch_current_scope_for_operator`
-  - A `live_session :require_authenticated_operator` scope - for routes that require authentication, similar to the plug with the same name
-  - In both cases, a `@current_scope` is assigned to the Plug connection and LiveView socket
-  - A plug `redirect_if_operator_is_authenticated` that redirects to a default path in case the operator is authenticated - useful for a registration page that should only be shown to unauthenticated operators
-- **Always let the user know in which router scopes, `live_session`, and pipeline you are placing the route, AND SAY WHY**
-- `phx.gen.auth` assigns the `current_scope` assign - it **does not assign a `current_operator` assign**
-- Always pass the assign `current_scope` to context modules as first argument. When performing queries, use `current_scope.operator` to filter the query results
-- To derive/access `current_operator` in templates, **always use the `@current_scope.operator`**, never use **`@current_operator`** in templates or LiveViews
-- **Never** duplicate `live_session` names. A `live_session :current_operator` can only be defined __once__ in the router, so all routes for the `live_session :current_operator`  must be grouped in a single block
-- Anytime you hit `current_scope` errors or the logged in session isn't displaying the right content, **always double check the router and ensure you are using the correct plug and `live_session` as described below**
+- **Use Tailwind CSS classes and custom CSS rules** to create polished, responsive, and visually stunning interfaces.
+- Tailwindcss v4 **no longer needs a tailwind.config.js** and uses a new import syntax in `app.css`:
 
-### Routes that require authentication
+      @import "tailwindcss" source(none);
+      @source "../css";
+      @source "../js";
+      @source "../../lib/my_app_web";
 
-LiveViews that require login should **always be placed inside the __existing__ `live_session :require_authenticated_operator` block**:
+- **Always use and maintain this import syntax** in the app.css file for projects generated with `phx.new`
+- **Never** use `@apply` when writing raw css
+- **Always** manually write your own tailwind-based components instead of using daisyUI for a unique, world-class design
+- Out of the box **only the app.js and app.css bundles are supported**
+  - You cannot reference an external vendor'd script `src` or link `href` in the layouts
+  - You must import the vendor deps into app.js and app.css to use them
+  - **Never write inline <script>custom js</script> tags within templates**
 
-    scope "/", AppWeb do
-      pipe_through [:browser, :require_authenticated_operator]
+### UI/UX & design guidelines
 
-      live_session :require_authenticated_operator,
-        on_mount: [{OperationsWeb.OperatorAuth, :require_authenticated}] do
-        # phx.gen.auth generated routes
-        live "/operators/settings", OperatorLive.Settings, :edit
-        live "/operators/settings/confirm-email/:token", OperatorLive.Settings, :confirm_email
-        # our own routes that require logged in operator
-        live "/", MyLiveThatRequiresAuth, :index
-      end
-    end
+- **Produce world-class UI designs** with a focus on usability, aesthetics, and modern design principles
+- Implement **subtle micro-interactions** (e.g., button hover effects, and smooth transitions)
+- Ensure **clean typography, spacing, and layout balance** for a refined, premium look
+- Focus on **delightful details** like hover effects, loading states, and smooth page transitions
 
-Controller routes must be placed in a scope that sets the `:require_authenticated_operator` plug:
-
-    scope "/", AppWeb do
-      pipe_through [:browser, :require_authenticated_operator]
-
-      get "/", MyControllerThatRequiresAuth, :index
-    end
-
-### Routes that work with or without authentication
-
-LiveViews that can work with or without authentication, **always use the __existing__ `:current_operator` scope**, ie:
-
-    scope "/", MyAppWeb do
-      pipe_through [:browser]
-
-      live_session :current_operator,
-        on_mount: [{OperationsWeb.OperatorAuth, :mount_current_scope}] do
-        # our own routes that work with or without authentication
-        live "/", PublicLive
-      end
-    end
-
-Controllers automatically have the `current_scope` available if they use the `:browser` pipeline.
-
-<!-- phoenix-gen-auth-end -->
 
 <!-- usage-rules-start -->
+
 <!-- phoenix:elixir-start -->
 ## Elixir guidelines
 
@@ -123,7 +90,19 @@ Controllers automatically have the `current_scope` available if they use the `:b
 - Read the docs and options before using tasks (by using `mix help task_name`)
 - To debug test failures, run tests in a specific file with `mix test test/my_test.exs` or run all previously failed tests with `mix test --failed`
 - `mix deps.clean --all` is **almost never needed**. **Avoid** using it unless you have good reason
+
+## Test guidelines
+
+- **Always use `start_supervised!/1`** to start processes in tests as it guarantees cleanup between tests
+- **Avoid** `Process.sleep/1` and `Process.alive?/1` in tests
+  - Instead of sleeping to wait for a process to finish, **always** use `Process.monitor/1` and assert on the DOWN message:
+
+      ref = Process.monitor(pid)
+      assert_receive {:DOWN, ^ref, :process, ^pid, :normal}
+
+   - Instead of sleeping to synchronize before the next call, **always** use `_ = :sys.get_state/1` to ensure the process has handled prior messages
 <!-- phoenix:elixir-end -->
+
 <!-- phoenix:phoenix-start -->
 ## Phoenix guidelines
 
@@ -141,6 +120,7 @@ Controllers automatically have the `current_scope` available if they use the `:b
 
 - `Phoenix.View` no longer is needed or included with Phoenix, don't use it
 <!-- phoenix:phoenix-end -->
+
 <!-- phoenix:ecto-start -->
 ## Ecto Guidelines
 
@@ -150,7 +130,9 @@ Controllers automatically have the `current_scope` available if they use the `:b
 - `Ecto.Changeset.validate_number/2` **DOES NOT SUPPORT the `:allow_nil` option**. By default, Ecto validations only run if a change for the given field exists and the change value is not nil, so such as option is never needed
 - You **must** use `Ecto.Changeset.get_field(changeset, :field)` to access changeset fields
 - Fields which are set programmatically, such as `user_id`, must not be listed in `cast` calls or similar for security purposes. Instead they must be explicitly set when creating the struct
+- **Always** invoke `mix ecto.gen.migration migration_name_using_underscores` when generating migration files, so the correct timestamp and conventions are applied
 <!-- phoenix:ecto-end -->
+
 <!-- phoenix:html-start -->
 ## Phoenix HTML guidelines
 
@@ -160,7 +142,7 @@ Controllers automatically have the `current_scope` available if they use the `:b
 - **Always** add unique DOM IDs to key elements (like forms, buttons, etc) when writing templates, these IDs can later be used in tests (`<.form for={@form} id="product-form">`)
 - For "app wide" template imports, you can import/alias into the `my_app_web.ex`'s `html_helpers` block, so they will be available to all LiveViews, LiveComponent's, and all modules that do `use MyAppWeb, :html` (replace "my_app" by the actual app name)
 
-- Elixir supports `if/else` but **does NOT support `if/else if` or `if/elsif`. **Never use `else if` or `elseif` in Elixir**, **always** use `cond` or `case` for multiple conditionals.
+- Elixir supports `if/else` but **does NOT support `if/else if` or `if/elsif`**. **Never use `else if` or `elseif` in Elixir**, **always** use `cond` or `case` for multiple conditionals.
 
   **Never do this (invalid)**:
 
@@ -229,6 +211,7 @@ Controllers automatically have the `current_scope` available if they use the `:b
         {end}
       </div>
 <!-- phoenix:html-end -->
+
 <!-- phoenix:liveview-start -->
 ## Phoenix LiveView guidelines
 
@@ -297,7 +280,7 @@ Controllers automatically have the `current_scope` available if they use the `:b
         <div :for={{id, message} <- @streams.messages} id={id} class="flex group">
           {message.username}
           <%= if @editing_message_id == message.id do %>
-            <!-- Edit mode -->
+            <%!-- Edit mode --%>
             <.form for={@edit_form} id="edit-form-#{message.id}" phx-submit="save_edit">
               ...
             </.form>
@@ -307,17 +290,18 @@ Controllers automatically have the `current_scope` available if they use the `:b
 
 - **Never** use the deprecated `phx-update="append"` or `phx-update="prepend"` for collections
 
-## LiveView JavaScript interop
-- Remember anytime you use `phx-hook="MyHook"` and that js hook manages its own DOM, you **must** also set the `phx-update="ignore"` attribute
-- **Always** provide an unique DOM id alongside `phx-hook` otherwise a compiler error will be raised
-- **Never** write embedded `<script>` tags in HEEx. Instead always write your scripts and hooks in the `assets/js` directory and integrate them with the `assets/js/app.js` file
+### LiveView JavaScript interop
 
-LiveView hooks come in two flavors, 1) collocated js hooks for "inline" scripts defined inside HEEx,
+- Remember anytime you use `phx-hook="MyHook"` and that JS hook manages its own DOM, you **must** also set the `phx-update="ignore"` attribute
+- **Always** provide an unique DOM id alongside `phx-hook` otherwise a compiler error will be raised
+
+LiveView hooks come in two flavors, 1) colocated js hooks for "inline" scripts defined inside HEEx,
 and 2) external `phx-hook` annotations where JavaScript object literals are defined and passed to the `LiveSocket` constructor.
 
-#### Inline collocated js hooks
+#### Inline colocated js hooks
+
 **Never** write raw embedded `<script>` tags in heex as they are incompatible with LiveView.
-Instead, **always use a collocated js hook script tag (`:type={Phoenix.LiveView.ColocatedHook}`)
+Instead, **always use a colocated js hook script tag (`:type={Phoenix.LiveView.ColocatedHook}`)
 when writing scripts inside the template**:
 
     <input type="text" name="user[phone_number]" id="user-phone-number" phx-hook=".PhoneNumber" />
@@ -334,11 +318,12 @@ when writing scripts inside the template**:
       }
     </script>
 
-- collocated hooks are automatically integrated into the app.js bundle
-- collocated hooks names **MUST ALWAYS** start with a `.` prefix, ie `.PhoneNumber`
+- colocated hooks are automatically integrated into the app.js bundle
+- colocated hooks names **MUST ALWAYS** start with a `.` prefix, i.e. `.PhoneNumber`
 
 #### External phx-hook
-External js hooks (`<div id="myhook" phx-hook="MyHook">`) must be placed in `assets/js/` and passed to the
+
+External JS hooks (`<div id="myhook" phx-hook="MyHook">`) must be placed in `assets/js/` and passed to the
 LiveSocket constructor:
 
     const MyHook = {
@@ -349,6 +334,7 @@ LiveSocket constructor:
     });
 
 #### Pushing events between client and server
+
 Use LiveView's `push_event/3` when you need to push events/data to the client for a phx-hook to handle.
 **Always** return or rebind the socket on `push_event/3` when pushing events:
 
@@ -360,7 +346,7 @@ Use LiveView's `push_event/3` when you need to push events/data to the client fo
       {:noreply, push_event(socket, "my_event", %{...})}
     end
 
-Pushed events can then be picked up in a js hook with `this.handleEvent`:
+Pushed events can then be picked up in a JS hook with `this.handleEvent`:
 
     mounted() {
       this.handleEvent("my_event", data => console.log("from server:", data));
@@ -459,4 +445,5 @@ And **never** do this:
 - You are FORBIDDEN from accessing the changeset in the template as it will cause errors
 - **Never** use `<.form let={f} ...>` in the template, instead **always use `<.form for={@form} ...>`**, then drive all form references from the form assign as in `@form[:field]`. The UI should **always** be driven by a `to_form/2` assigned in the LiveView module that is derived from a changeset
 <!-- phoenix:liveview-end -->
+
 <!-- usage-rules-end -->
