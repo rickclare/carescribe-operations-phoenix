@@ -7,7 +7,7 @@
     ],
     "catalog": {
       "@tailwindcss/cli": "^4.1.18",
-      "daisyui": "^5.5.13",
+      "daisyui": "^5.5.14",
       "phoenix": "./deps/phoenix",
       "phoenix_html": "./deps/phoenix_html",
       "phoenix_live_view": "./deps/phoenix_live_view",
@@ -16,9 +16,9 @@
     }
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^9.39.2",
     "@socketsecurity/bun-security-scanner": "^1.1.2",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^16.5.0",
     "prettier": "^3.7.4",
