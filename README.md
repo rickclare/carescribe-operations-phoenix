@@ -14,9 +14,12 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 ```sh
 mix playwright.setup
 
-BUN_OPTIONS="" bun --cwd=playwright playwright test
-# or
-BUN_OPTIONS="" bun --cwd=playwright playwright test --ui
+# Headless browser testing (see https://github.com/oven-sh/bun/issues/8222#issuecomment-3665364677)
+PW_DISABLE_TS_ESM=1 _build/bun --cwd=playwright playwright test
+
+# NOTE: The UI mode of Playwright does not currently work well without Node
+#       (without Node, the UI does not show a list of available tests files)
+mise exec node@latest -- _build/bun --cwd=playwright playwright test --ui
 ```
 
 ## Learn more

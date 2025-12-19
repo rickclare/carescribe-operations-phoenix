@@ -1,5 +1,12 @@
 [tools]
-# node = "lts-krypton" # Node may be required for Playwright tests
+# node = "latest" # Node may be required for Playwright tests
+
+[tasks."pw:test"]
+env = { PW_DISABLE_TS_ESM = "1" }
+run = "bun --cwd=playwright playwright test"
+
+[tasks."pw:test:ui"]
+run = "mise exec node@latest -- bun --cwd=playwright playwright test --ui"
 
 [env]
 _.path = "./_build"
